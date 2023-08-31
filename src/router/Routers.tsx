@@ -6,6 +6,7 @@ import Main from '../pages/Main';
 import IssueList from '../pages/IssueList';
 import Header from '../components/common/Header';
 import Error from '../pages/Error';
+import IssueDetail from '../pages/IssueDetail';
 
 export default function Routers() {
   return (
@@ -15,6 +16,7 @@ export default function Routers() {
           <Route path={PATH.MAIN} element={<Main />} />
           <Route element={<Header />}>
             <Route path={PATH.ISSUES} element={<IssueList />} />
+            <Route path={PATH.ISSUEDETAIL} element={<IssueDetail />} />
           </Route>
           <Route path='/*' element={<Error />} />
         </Routes>

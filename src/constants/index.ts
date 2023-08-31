@@ -14,7 +14,7 @@ export const STATUS = {
 export const PATH = {
   MAIN: '/',
   ISSUES: '/issues',
-  ISSUEDETAIL: '/issues/:id',
+  ISSUEDETAIL: '/issues/:issueNumber',
 } as const;
 
 export const ERROR_MESSAGE = {
