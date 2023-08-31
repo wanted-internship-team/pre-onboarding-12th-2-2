@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import IssueCard from '../components/IssueCard';
 import AdCard from '../components/common/AdCard';
 import Spinner from '../components/common/Spinner';
+import Error from './Error';
 
 import { useRepoContext } from '../contexts/repoContext';
 import { getRepoIssueList } from '../apis/requests';
@@ -16,7 +17,7 @@ import { IissueList, IissueSummary } from '../types/issue';
 import { STATUS } from '../constants';
 
 export default function IssueList() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const [issueList, setIssueList] = useState<IissueList>([]);
   const { repoInfo } = useRepoContext();
   const { data, status, errorMessage, fetch } = useFetch<IissueList>();
@@ -42,7 +43,7 @@ export default function IssueList() {
   return (
     <div>
       {status === STATUS.LOADING && <Spinner type='page' />}
-      {status === STATUS.ERROR && <p>{errorMessage}</p>}
+      {status === STATUS.ERROR && <Error errorMessage={errorMessage} />}
       {issueList &&
         issueList.map((issue: IissueSummary, index: number) => (
           <React.Fragment key={issue.id}>
@@ -52,7 +53,7 @@ export default function IssueList() {
             {(index + 1) % 4 === 0 && <AdCard />}
           </React.Fragment>
         ))}
-      <div ref={refScroll} />
+      {data?.length !== 0 && <div ref={refScroll} />}
     </div>
   );
 }

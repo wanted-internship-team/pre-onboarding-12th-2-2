@@ -16,7 +16,7 @@ export default function useObserver(callback: IObserverCallback, status: status)
 
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
-      if (target.isIntersecting && status !== STATUS.LOADING) {
+      if (target.isIntersecting && status === STATUS.SUCCESS) {
         callback();
       }
     }, options);
@@ -30,7 +30,7 @@ export default function useObserver(callback: IObserverCallback, status: status)
         observer.unobserve(containerRef.current);
       }
     };
-  }, [containerRef, callback]);
+  }, [callback, containerRef]);
 
   return containerRef;
 }
