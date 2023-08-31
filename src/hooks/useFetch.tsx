@@ -29,7 +29,7 @@ export default function useFetch<R>(callback?: () => Promise<OctokitResponse<R>>
       setStatus(STATUS.SUCCESS);
     } catch (error) {
       setStatus(STATUS.ERROR);
-      // FIXME: Error code 상수화! (not 'NOT FOUND')
+
       if (error instanceof Error) {
         if (error.message === 'Not Found') {
           // 에러코드 400
