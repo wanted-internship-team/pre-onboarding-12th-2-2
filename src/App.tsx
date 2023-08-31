@@ -1,7 +1,9 @@
 import React from 'react';
+import Routers from './router/Routers';
+import './style.css';
 
 function App() {
-  return <div className='App'>React Issues</div>;
+  return <Routers />;
 }
 
 export default App;
