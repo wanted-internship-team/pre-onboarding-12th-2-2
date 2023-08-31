@@ -1,5 +1,7 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
 import Spinner from '../components/common/Spinner';
 
 import { useRepoContext } from '../contexts/repoContext';
@@ -8,8 +10,6 @@ import { getRepo } from '../apis/requests';
 
 import { IrepoResponse } from '../types/issue';
 import { STATUS, PATH } from '../constants';
-
-import styled from 'styled-components';
 
 export default function Main() {
   const navigate = useNavigate();
@@ -58,12 +58,10 @@ export default function Main() {
         onChange={setInputValue}
       />
       <InputBox type='text' placeholder='repository' name='repo' onChange={setInputValue} />
-
       <SubmitButton type='button' onClick={validateRepo}>
         {status === STATUS.LOADING ? <Spinner type='button' /> : '이슈 보러가기'}
       </SubmitButton>
       {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-
       <RedirectionText>※ Facebook/React의 이슈를 보고 싶다면?</RedirectionText>
       <RedirectButton type='button' onClick={navigateDefaultPage}>
         React Issue로 바로 가기

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useRepoContext } from '../../contexts/repoContext';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { GoListUnordered, GoHome } from 'react-icons/go';
+
+import { useRepoContext } from '../../contexts/repoContext';
 import { PATH } from '../../constants/index';
+
+import { GoListUnordered, GoHome } from 'react-icons/go';
 
 export default function Header() {
   const { repoInfo } = useRepoContext();

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { IissueSummary, IissueDetail } from '../types/issue';
 import styled from 'styled-components';
+
+import { IissueSummary, IissueDetail } from '../types/issue';
 import { GoIssueOpened, GoComment } from 'react-icons/go';
 
 interface Iprops {
