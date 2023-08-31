@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import { IrepoInfo } from '../types/issue';
 
 interface IRepoContext {
-  state: IrepoInfo;
+  repoInfo: IrepoInfo;
   setRepoInfo: React.Dispatch<React.SetStateAction<IrepoInfo>>;
 }
 
@@ -10,13 +10,11 @@ const RepoContext = createContext<IRepoContext | undefined>(undefined);
 
 export const RepoProvider = ({ children }: { children: React.ReactNode }) => {
   const [repoInfo, setRepoInfo] = useState<IrepoInfo>({
-    owner: '',
-    repo: '',
+    owner: 'facebook',
+    repo: 'react',
   });
 
-  return (
-    <RepoContext.Provider value={{ state: repoInfo, setRepoInfo }}>{children}</RepoContext.Provider>
-  );
+  return <RepoContext.Provider value={{ repoInfo, setRepoInfo }}>{children}</RepoContext.Provider>;
 };
 
 export const useRepoContext = () => {
