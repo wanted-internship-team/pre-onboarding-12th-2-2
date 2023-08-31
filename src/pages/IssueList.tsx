@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useRepoContext } from '../contexts/repoContext';
-import useFetch from '../hooks/useFetch';
-import { getRepoIssueList } from '../apis/requests';
-import { IissueList, IissueSummary } from '../types/issue';
-import { STATUS } from '../constants';
 import Spinner from '../components/common/Spinner';
 import IssueCard from '../components/IssueCard';
 import AdCard from '../components/common/AdCard';
+
+import { useRepoContext } from '../contexts/repoContext';
+import { getRepoIssueList } from '../apis/requests';
+
+import useFetch from '../hooks/useFetch';
 import useObserver from '../hooks/useObserver';
+
+import { IissueList, IissueSummary } from '../types/issue';
+import { STATUS } from '../constants';
 
 export default function IssueList() {
   const [page, setPage] = useState(1);
@@ -41,7 +44,6 @@ export default function IssueList() {
         issueList.map((issue: IissueSummary, index: number) => (
           <React.Fragment key={issue.id}>
             <IssueCard issue={issue} />
-            <hr />
             {(index + 1) % 4 === 0 && <AdCard />}
           </React.Fragment>
         ))}

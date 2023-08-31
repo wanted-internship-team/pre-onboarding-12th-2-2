@@ -6,11 +6,19 @@ export interface SpinnerProps {
 }
 
 export default function Spinner({ type }: SpinnerProps) {
-  return (
-    <SpinnerBox type={type}>
-      <SpinnerComp type={type} />
-    </SpinnerBox>
-  );
+  if (type === 'page') {
+    return (
+      <SpinnerPageBox type={type}>
+        <SpinnerComp type={type} />
+      </SpinnerPageBox>
+    );
+  } else {
+    return (
+      <SpinnerButtonBox type={type}>
+        <SpinnerComp type={type} />
+      </SpinnerButtonBox>
+    );
+  }
 }
 
 const spinAnimation = keyframes`
@@ -18,11 +26,23 @@ const spinAnimation = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-export const SpinnerBox = styled.div<SpinnerProps>`
+export const SpinnerButtonBox = styled.div<SpinnerProps>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: ${({ type }) => (type === 'page' ? '10vh' : 'auto')};
+`;
+
+const SpinnerPageBox = styled.div<SpinnerProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 `;
 
 const SpinnerComp = styled.div<SpinnerProps>`

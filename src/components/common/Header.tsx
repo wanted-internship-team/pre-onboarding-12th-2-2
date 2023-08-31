@@ -17,6 +17,8 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.header`
+  margin: 20px;
   text-align: center;
   font-size: 24px;
+  font-weight: 700;
 `;
