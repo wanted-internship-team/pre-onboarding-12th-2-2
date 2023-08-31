@@ -25,12 +25,13 @@ export const getRepoIssueList = async (
   return res;
 };
 
-// FIXME: 요청 url 수정
 export const getIssueDetail = async (
   owner: string,
   repo: string,
   issueNumber: number,
 ): Promise<OctokitResponse<IissueDetail>> => {
-  const res = await octokitInstance.request(`GET ${baseURL}/${owner}/${repo}/${issueNumber}`);
+  const res = await octokitInstance.request(
+    `GET ${baseURL}/${owner}/${repo}/issues/${issueNumber}`,
+  );
   return res;
 };

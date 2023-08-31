@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Spinner from '../components/common/Spinner';
+import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
+
 import IssueCard from '../components/IssueCard';
 import AdCard from '../components/common/AdCard';
+import Spinner from '../components/common/Spinner';
 
 import { useRepoContext } from '../contexts/repoContext';
 import { getRepoIssueList } from '../apis/requests';
@@ -43,7 +46,9 @@ export default function IssueList() {
       {issueList &&
         issueList.map((issue: IissueSummary, index: number) => (
           <React.Fragment key={issue.id}>
-            <IssueCard issue={issue} />
+            <IssueLink to={`${issue.number}`}>
+              <IssueCard issue={issue} />
+            </IssueLink>
             {(index + 1) % 4 === 0 && <AdCard />}
           </React.Fragment>
         ))}
@@ -51,3 +56,9 @@ export default function IssueList() {
     </div>
   );
 }
+
+const IssueLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+`;

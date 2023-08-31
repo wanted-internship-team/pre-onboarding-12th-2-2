@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { IissueSummary, IissueDetail } from '../types/issue';
 import styled from 'styled-components';
 import { GoIssueOpened, GoComment } from 'react-icons/go';
@@ -13,9 +14,16 @@ export default function IssueCard(props: Iprops) {
   const parts = issue.created_at.split('T');
   const createDate = parts[0];
 
+  const location = useLocation();
+  const pathNumber = location.pathname.substr(8);
+
   return (
     <CardContainer>
-      <GoIssueOpened className='ic_issue' />
+      {pathNumber ? (
+        <IMAGE src={issue.user.avatar_url} alt='프로필' />
+      ) : (
+        <GoIssueOpened className='ic_issue' />
+      )}
       <InfoContainer>
         <CardInfo>
           <h1>
@@ -41,6 +49,7 @@ const CardContainer = styled.section`
   gap: 12px;
   align-items: flex-start;
   border-bottom: 1px solid lightgray;
+  width: 100%;
 
   .ic_issue {
     margin-top: 2px;
@@ -54,6 +63,13 @@ const InfoContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+`;
+
+const IMAGE = styled.img`
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 `;
 
 const CardInfo = styled.div`
