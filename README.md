@@ -143,22 +143,30 @@ npm start
 - 상태 관리: Context API
 - HTTP Client: OctoKit
 - 라우팅: react-router-dom
-- 스타일: styled-components, react-icon
+- 스타일: styled-components, react-icon, react-markdown
 
 ```jsx
 "dependencies": {
-    "@octokit/rest": "^20.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
-    "react-markdown": "^8.0.7",
-    "react-router-dom": "^6.15.0",
-    "react-scripts": "5.0.1",
-    "rehype-katex": "^6.0.3",
-    "remark-gfm": "^3.0.1",
-    "styled-components": "^6.0.7",
-    "typescript": "^4.9.5",
+	"octokit": "^3.1.0",
+	"react": "^18.2.0",
+	"react-dom": "^18.2.0",
+	"react-icons": "^4.10.1",
+	"react-markdown": "^8.0.7",
+	"react-router-dom": "^6.15.0",
+	"react-scripts": "5.0.1",
+	"styled-components": "^6.0.7",
+	"typescript": "^4.9.5",
   },
+
+"devDependencies": {
+	"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+	"@typescript-eslint/parser": "^5.62.0",
+	"eslint-config-prettier": "^9.0.0",
+	"eslint-plugin-prettier": "^5.0.0",
+	"husky": "^8.0.3",
+	"lint-staged": "^14.0.1",
+	"prettier": "^3.0.2"
+},
 ```
 
 ## 💬 프로젝트 진행 과정
