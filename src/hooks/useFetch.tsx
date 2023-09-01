@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ERROR_MESSAGE, STATUS } from '../constants';
 import { OctokitResponse } from '@octokit/types';
+import { RequestError } from '@octokit/request-error';
 
 type status = keyof typeof STATUS;
 
@@ -16,7 +17,6 @@ export default function useFetch<R>(callback?: () => Promise<OctokitResponse<R>>
   const fetch = async ({ callback }: Icallback<R>) => {
     try {
       if (!callback) return;
-
       setStatus(STATUS.LOADING);
 
       const res = await callback();
@@ -29,18 +29,19 @@ export default function useFetch<R>(callback?: () => Promise<OctokitResponse<R>>
       setStatus(STATUS.SUCCESS);
     } catch (error) {
       setStatus(STATUS.ERROR);
-
-      if (error instanceof Error) {
-        if (error.message === 'Not Found') {
-          // 에러코드 400
+      if (error instanceof RequestError) {
+        if (error.status === 404) {
           setErrorMessage(ERROR_MESSAGE.USER[404]);
           console.error(ERROR_MESSAGE.DEV[404]);
         }
-        if (error.message === 'Unprocessable Entity') {
-          // 에러코드 422
+        if (error.status === 422) {
           setErrorMessage(ERROR_MESSAGE.USER[422]);
           console.error(ERROR_MESSAGE.DEV[422]);
         }
+      } else {
+        // 500 에러 혹은 알 수 없는 에러
+        setErrorMessage(ERROR_MESSAGE.USER.DEFAULT);
+        console.error(ERROR_MESSAGE.DEV.DEFAULT);
       }
     }
   };
