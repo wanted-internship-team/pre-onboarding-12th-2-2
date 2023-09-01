@@ -30,16 +30,12 @@ export default function useFetch<R>(callback?: () => Promise<OctokitResponse<R>>
     } catch (error) {
       setStatus(STATUS.ERROR);
       if (error instanceof RequestError) {
-        if (error.status === 404) {
-          setErrorMessage(ERROR_MESSAGE.USER[404]);
-          console.error(ERROR_MESSAGE.DEV[404]);
-        }
-        if (error.status === 422) {
-          setErrorMessage(ERROR_MESSAGE.USER[422]);
-          console.error(ERROR_MESSAGE.DEV[422]);
+        if (error.status === 404 || error.status === 422) {
+          setErrorMessage(ERROR_MESSAGE.USER[error.status]);
+          console.error(ERROR_MESSAGE.DEV[error.status]);
         }
       } else {
-        // 500 에러 혹은 알 수 없는 에러
+        // 500 에러 혹은 알 수 없는 에러 대응
         setErrorMessage(ERROR_MESSAGE.USER.DEFAULT);
         console.error(ERROR_MESSAGE.DEV.DEFAULT);
       }
