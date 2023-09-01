@@ -210,6 +210,9 @@ npm start
     - 광고 이미지 클릭 시 https://www.wanted.co.kr/ 로 이동합니다.
 - 화면을 아래로 스크롤 할 시 이슈 목록을 추가합니다.(인피니티 스크롤)
 
+![issue_list](https://github.com/wanted-internship-team/pre-onboarding-12th-2-2/assets/102455161/c865b932-37f7-4672-bfa2-446b563ee8e9)
+
+
 ### ✅ Assignment 1
 - 이슈 목록 정렬 및 api 요청
 
@@ -279,6 +282,8 @@ api가 무한 요청되는 문제가 있었습니다.
 
 - 이슈의 상세 내용 표시
 - ‘이슈번호, 이슈제목, 작성자, 작성일, 코멘트 수, 작성자 프로필 이미지, 본문' 표시
+
+![issue_detail](https://github.com/wanted-internship-team/pre-onboarding-12th-2-2/assets/102455161/fe41f11e-5e09-447e-a195-109c898b16ac)
 
 ### ⭐️ **Best Practice**
 
