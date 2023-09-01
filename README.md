@@ -36,7 +36,7 @@ Best Practice를 선정하기 위해 작성한 코드를 동료에게 이해하�
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/yesharry">
+        <a href="https://github.com/devsomda">
         <img src="https://avatars.githubusercontent.com/u/109324517?v=4" width="100px;" alt=""/>
         <br />
         <sub><b>@devsomda</b></sub>
